@@ -1,0 +1,23 @@
+name: Windows installer
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "installer/**"
+      - ".github/workflows/windows-installer.yml"
+jobs:
+  build-pe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build PE32 installer and launcher
+        run: python3 installer/build_exe.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: worldkitty-windows-exe
+          path: |
+            public/downloads/*.exe
+            downloads/*.exe
+            public/downloads/checksums.json
+            downloads/checksums.json
