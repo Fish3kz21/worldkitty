@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WORLDKITTY — Infinite Charge</title>
+  <meta name="description" content="Rechargeable digital energy drink. Generation loop mints Volt Credits and tops the whole-world kitty. Redeem actual cans and merch claims locally.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=Sora:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <nav>
+    <div class="wrap inner">
+      <div class="brand"><span class="mark"></span> WORLDKITTY</div>
+      <div class="nav-links">
+        <a href="#charge">Charge</a>
+        <a href="#loop">Loop</a>
+        <a href="#kitty">World Kitty</a>
+        <a href="#shop">Redeem</a>
+        <a href="#aix">AiX++</a>
+        <a href="#manifesto">Protocol</a>
+      </div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <div class="chip chip-aix">AiX++</div>
+        <div class="chip" id="statusChip">IDLE</div>
+      </div>
+    </div>
+  </nav>
+  <header class="wrap hero">
+    <div>
+      <div class="kicker">Specialist digital energy · rechargeable · AiX++ incorporated</div>
+      <h1>Infinite charge.<br><span class="grad">Whole-world kitty.</span></h1>
+      <p class="lede">WorldKitty is a specialist digital energy drink. Recharge the can. Arm the generation loop. Credits mint locally. A cut of every tick tops the World Kitty. Spend Volt Credits on claim tickets for cans and merchandise.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#charge">Recharge the can</a>
+        <a class="btn btn-ghost" href="#shop">Browse merch loop</a>
+      </div>
+    </div>
+    <figure class="hero-art">
+      <img src="assets/can-hero.jpg" alt="WorldKitty Infinite Charge can">
+      <a class="hero-qr" href="#aix" title="Scan AiX++ bind plate">
+        <img src="assets/aixpp-qr-plate.png" alt="AiX++ QR code">
+      </a>
+      <figcaption class="caption">INFINITE CHARGE · AiX++ BOUND</figcaption>
+    </figure>
+  </header>
+  <main class="wrap">
+    <section class="panel-grid" id="charge">
+      <article class="card" id="loop">
+        <h2>Recharge + generation loop</h2>
+        <p class="sub">Charge is stored on this device. While the loop is live, each second mints Volt Credits and feeds the World Kitty.</p>
+        <div class="meters">
+          <div>
+            <div class="meter-label"><span>DIGITAL CAN CHARGE</span><span id="chargeVal">0%</span></div>
+            <div class="bar"><span id="chargeBar"></span></div>
+          </div>
+          <div>
+            <div class="meter-label"><span>WORLD KITTY POOL</span><span id="kittyVal">0</span></div>
+            <div class="bar gold"><span id="kittyBar"></span></div>
+          </div>
+        </div>
+        <div class="stats">
+          <div class="stat"><b id="statCredits">0</b><span>VOLT CREDITS</span></div>
+          <div class="stat"><b id="statKitty">0</b><span>YOU FED THE KITTY</span></div>
+          <div class="stat"><b id="statTicks">0</b><span>LOOP TICKS</span></div>
+        </div>
+        <div class="controls">
+          <button class="btn btn-primary" id="rechargeBtn" type="button">Recharge</button>
+          <button class="btn btn-magenta" id="loopBtn" type="button">Start generation loop</button>
+          <button class="btn btn-ghost" id="resetBtn" type="button">Reset local vault</button>
+        </div>
+        <p class="sub" style="margin:16px 0 8px">Loop telemetry (local only)</p>
+        <div class="loop-log" id="loopLog" aria-live="polite"></div>
+      </article>
+      <aside class="card" id="kitty">
+        <div class="kitty-art"><img src="assets/world-kitty-globe.jpg" alt="World Kitty orbital pool"></div>
+        <h2>The World Kitty</h2>
+        <p class="sub">Every live tick splits yield: most becomes Volt Credits, twenty-eight percent lands in the World Kitty.</p>
+        <img src="assets/volt-mascot.jpg" alt="Volt the WorldKitty mascot" style="border-radius:16px;margin-top:8px;max-height:280px;object-fit:cover;width:100%;border:1px solid var(--line)">
+      </aside>
+    </section>
+    <section class="shop" id="shop">
+      <div class="shop-head">
+        <div>
+          <div class="kicker">Redemption loop</div>
+          <h2>Credits, cans, merchandise</h2>
+        </div>
+      </div>
+      <div class="grid-cards" id="shopGrid"></div>
+      <div class="inventory card" style="margin-top:22px">
+        <h2>Claim ledger</h2>
+        <div class="inv-list" id="invList"></div>
+      </div>
+    </section>
+    <section class="card" id="aix" style="margin-bottom:28px">
+      <div class="kicker">Incorporated protocol</div>
+      <h2>AiX++ bind plate</h2>
+      <p class="sub">WorldKitty carries an <strong>AiX++</strong> identity mark. The QR is a real scannable payload.</p>
+      <div class="aix-plate">
+        <div class="qr-frame">
+          <img src="assets/aixpp-qr-plate.png" alt="AiX++ WorldKitty QR bind plate">
+        </div>
+        <div>
+          <p class="sub">Encoded payload</p>
+          <div class="payload" id="aixPayload"></div>
+          <div class="aix-actions">
+            <button class="btn btn-primary" id="copyAixBtn" type="button">Copy AiX++ payload</button>
+            <button class="btn btn-ghost" id="downloadQrBtn" type="button">Download QR SVG</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="manifesto" id="manifesto">
+      <img src="assets/sixpack.jpg" alt="WorldKitty flavour six pack">
+      <div>
+        <div class="kicker">Protocol</div>
+        <h2>How the specialist loop works</h2>
+        <div class="steps">
+          <div class="step"><div class="num">01</div><div><strong>Recharge</strong><p class="sub">Top the digital can.</p></div></div>
+          <div class="step"><div class="num">02</div><div><strong>Arm the loop</strong><p class="sub">Mint Volt Credits and feed the World Kitty.</p></div></div>
+          <div class="step"><div class="num">03</div><div><strong>Redeem</strong><p class="sub">Spend credits on can twins or merch.</p></div></div>
+          <div class="step"><div class="num">04</div><div><strong>Human control</strong><p class="sub">Pause anytime. Reset wipes only this device.</p></div></div>
+          <div class="step"><div class="num">05</div><div><strong>Incorporate AiX++</strong><p class="sub">Scan the bind plate. Tickets are prefixed AIX++/WK.</p></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap">
+      <strong>WORLDKITTY</strong> · Infinite Charge · incorporated <strong>AiX++</strong>
+    </div>
+  </footer>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="js/app.js"></script>
+</body>
+</html>
