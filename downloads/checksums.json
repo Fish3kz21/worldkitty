@@ -1,0 +1,15 @@
+{
+  "setup": {
+    "path": "/tmp/worldkitty-gh/downloads/WorldKittySetup.exe",
+    "bytes": 2560,
+    "sha256": "74fcce71d8b5eacc18375780b1ed4c9a623d4a7de8dcfc07d5f360548ef6609c",
+    "mode": "setup"
+  },
+  "launcher": {
+    "path": "/tmp/worldkitty-gh/downloads/WorldKitty.exe",
+    "bytes": 2560,
+    "sha256": "39a4f236fb07e294accc88f3e5903e72910a036c2374a8e8df1765521a1e7675",
+    "mode": "launch"
+  },
+  "url": "https://worldkitty.vercel.app"
+}
