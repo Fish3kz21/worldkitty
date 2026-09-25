@@ -1,0 +1,8 @@
+{
+  "id": "worldkitty.merged.v1",
+  "title": "WORLDKITTY + rechargeable energy drink chat merge",
+  "status": "single-source",
+  "payload": "AiX++://WORLDKITTY/INFINITE-CHARGE?protocol=aixpp.wk.v1&loop=recharge>mint>kitty>redeem&vault=local",
+  "loop": { "rechargeDelta": 34, "kittyShare": 0.28, "vault": "localStorage:worldkitty.merged.v1" },
+  "deploy": { "vercel": "https://worldkitty.vercel.app", "github": "https://github.com/Fish3kz21/worldkitty" }
+}
